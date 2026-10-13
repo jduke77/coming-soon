@@ -1,128 +1,210 @@
-<!DOCTYPE html>
-<!-- triggering deploy -->
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>twobin — Coming soon</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&display=swap" rel="stylesheet" />
-
-<style>
-  :root {
-    --ink-900: #1a1c1c;
-    --ink-600: #4e5354;
-    --ink-500: #6b7172;
-    --ink-400: #8b9192;
-    --paper-50: #fbfaf7;
-    --paper-300: #dfddd6;
-    --accent: #E8A945;
-  }
-
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; height: 100%; }
-  body {
-    font-family: 'Archivo', system-ui, -apple-system, sans-serif;
-    background: var(--paper-50);
-    color: var(--ink-900);
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 24px;
-    overflow: hidden;
-  }
-
-  /* Hairline grid backdrop, faded to edges */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(20,20,20,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20,20,20,0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: center;
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85), transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85), transparent 70%);
-  }
-
-  main {
-    position: relative;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(28px, 5vh, 56px);
-  }
-
-  .logo {
-    width: clamp(220px, 38vw, 360px);
-    height: auto;
-    display: block;
-    animation: rise .7s ease-out both;
-  }
-
-  .label-row {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    animation: rise .7s ease-out .15s both;
-  }
-  .label-row .rule {
-    width: clamp(40px, 8vw, 80px);
-    height: 1px;
-    background: var(--ink-400);
-  }
-  .coming-soon {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 600;
-    font-size: clamp(14px, 1.6vw, 17px);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--ink-600);
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .coming-soon .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 0 rgba(232,169,69,0.55);
-    animation: pulseDot 1.8s ease-out infinite;
-    flex-shrink: 0;
-  }
-
-  @keyframes pulseDot {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(232,169,69,0.55); }
-    50% { box-shadow: 0 0 0 8px rgba(232,169,69,0); }
-  }
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: none; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .logo, .label-row { animation: none; }
-    .coming-soon .dot { animation: none; }
-  }
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TwoBin — Two-bin kanban that keeps your shop stocked</title>
+<meta name="description" content="TwoBin turns reordering shop supplies into a system your whole team can run: kanban cards, scanning, warehouse labels, purchasing and receiving. Free for up to 50 parts.">
+<link rel="canonical" href="https://www.two-bin.com/">
+<meta property="og:title" content="TwoBin — Two-bin kanban that keeps your shop stocked">
+<meta property="og:description" content="TwoBin turns reordering shop supplies into a system your whole team can run: kanban cards, scanning, warehouse labels, purchasing and receiving. Free for up to 50 parts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.two-bin.com/">
+<meta property="og:image" content="https://www.two-bin.com/assets/img/kanban-card.jpg">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-  <main>
-    <img src="assets/twobin-logo.png" alt="twobin" class="logo" />
-    <div class="label-row">
-      <span class="rule" aria-hidden="true"></span>
-      <span class="coming-soon">
-        <span class="dot" aria-hidden="true"></span>
-        Coming soon
-      </span>
-      <span class="rule" aria-hidden="true"></span>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="TwoBin home"><img src="/assets/twobin-logo-dark.png" alt="TwoBin"></a>
+    <nav class="nav">
+      <a class="hide-sm" href="/#how-it-works">How it works</a>
+      <a class="hide-sm" href="/#pricing">Pricing</a>
+      <a class="hide-sm" href="/#contact">Contact</a>
+      <a href="https://app.two-bin.com/login">Sign in</a>
+      <a class="btn small" href="https://app.two-bin.com/signup">Start free</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Two-bin kanban for small shops</div>
+      <h1>You didn't start your shop to waste time ordering supplies.</h1>
+      <p class="lead">You started it to build something. But somehow you're the only one who knows what to reorder, where to buy it, or how much &mdash; and the whole place stops when you're not on it. TwoBin takes the dumbest job in the building off your plate and turns it into a system your whole team can run.</p>
+      <p><a class="btn" href="https://app.two-bin.com/signup">Start free</a> &nbsp; <a class="btn ghost" href="#how-it-works">See how it works</a></p>
+      <p class="cta-note">Free forever for up to 50 parts. No credit card. Unlimited users.</p>
     </div>
-  </main>
+    <div class="hero-card"><img src="/assets/img/kanban-card.jpg" alt="A TwoBin kanban card: part photo, reorder quantity, location and a QR code to scan when the bin runs empty" width="900" height="1215"></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>You know this shop.</h2>
+    <div class="beats">
+      <div class="beat"><strong>The toolbox stash.</strong>Your best people hoard grinding discs in their drawers &mdash; hundreds of dollars of supplies &mdash; because they don't trust the shop won't run out.</div>
+      <div class="beat"><strong>The Monday supply run.</strong>A crew is headed to the field and there are no cutting discs. So it's your card and a Home Depot run before the job can start.</div>
+      <div class="beat"><strong>The sticky note.</strong>&ldquo;We're out. Need 10 today.&rdquo; Stuck to your desk, again.</div>
+      <div class="beat"><strong>The $1 part.</strong>It just stopped a $200-an-hour crew.</div>
+    </div>
+    <p class="closer">None of this is a people problem. It's a system problem. You just never had time to build the system.</p>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow">Not inventory software</div>
+        <h2>A system for never running out.</h2>
+        <p class="lead">You don't need to count and barcode every screw like you're running a warehouse. Counting is for the things you sell. TwoBin is for the stuff that quietly keeps your shop running &mdash; consumables, hardware, the supplies nobody thinks about until they're gone.</p>
+        <p>That's what a two-bin system does. One bin in use, one in reserve. When the first runs empty, someone scans its card &mdash; and the reorder is on its way while the team keeps working out of the reserve.</p>
+      </div>
+      <div><img class="shot" src="/assets/img/bin-label.jpg" alt="A TwoBin bin label with the part photo, part number and a QR code" loading="lazy"></div>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>The front bin empties.</h3>Your team keeps working out of the reserve bin. No interruption.</div>
+      <div class="step"><h3>Scan the card.</h3>One scan from any phone puts the part on the reorder list.</div>
+      <div class="step"><h3>Order and receive.</h3>Purchasing sees what's needed, grouped by vendor. Receive it and it goes back to its bin.</div>
+      <div class="step"><h3>You never think about it.</h3>No counting, no guessing, no Monday runs.</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">What's inside</div>
+    <h2>The reason you're the bottleneck is there's no system. So we built the system.</h2>
+    <div class="features">
+      <div class="feature"><h3>Kanban cards with a photo</h3><p>Anyone can print a card for any part. No more &ldquo;only the owner knows how to make a label.&rdquo;</p></div>
+      <div class="feature"><h3>Warehouse layout</h3><p>Map your space &mdash; area, row, rack, shelf, bin &mdash; and print every location label you need.</p></div>
+      <div class="feature"><h3>Scan on the floor</h3><p>Any phone. An empty bin becomes a reorder in one scan.</p></div>
+      <div class="feature"><h3>Purchasing that's ready to go</h3><p>Everything that needs ordering, grouped by vendor, with purchase orders when you want them.</p></div>
+      <div class="feature"><h3>Receiving and put-away</h3><p>Receive what came in and the system tells you exactly where it goes.</p></div>
+      <div class="feature"><h3>A parts catalog to start fast</h3><p>Add common shop supplies from a ready-made catalog instead of typing every part in.</p></div>
+    </div>
+    <div class="shots">
+      <img class="shot" src="/assets/img/warehouse-layout.jpg" alt="TwoBin warehouse layout: racks, shelves and bins mapped out" loading="lazy">
+      <img class="shot" src="/assets/img/location-labels.jpg" alt="Printed TwoBin location labels with QR codes" loading="lazy">
+    </div>
+    <p class="closer">Every one of these was a job that used to stop with you. Now it doesn't.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two-col">
+    <div>
+      <h2>Letting go doesn't mean caring less.</h2>
+      <p>The reason you can't let go is that you care. You built this by doing it right, with your own hands. But that same instinct is now the ceiling on how big you can get.</p>
+      <p>The care doesn't have to go away. It just moves &mdash; from doing every job yourself to building a system your team can run the way you would. And you don't do it all at once. Start with the lowest rung: ordering the supplies. Let a system hold it. Watch it not fall apart.</p>
+      <blockquote class="quote">&ldquo;I wore nice shirts to work every day so I'd stop grabbing a grinder. I didn't start my shop to do that job &mdash; I hired someone for it.&rdquo;<cite>Jonathan Duke, founder</cite></blockquote>
+    </div>
+    <div>
+      <div class="eyebrow">Built in a real shop</div>
+      <h2>Made by a shop owner, for shop owners.</h2>
+      <p>TwoBin didn't come out of a software company. It came out of a 12,000 sq ft fabrication shop in Texas with the exact problems you have. It was built because its owner was the bottleneck &mdash; the only one who could add a part or make a label &mdash; and got tired of it. Everything here exists because a real shop needed it first.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Pricing</div>
+    <h2>Free to start. Priced by parts, not people.</h2>
+    <p class="lead">Unlimited users on every plan &mdash; put your whole team on it. Your parts are never deleted. Prices in US dollars; sales tax added where required.</p>
+    <div class="toggle" role="group" aria-label="Billing period">
+      <button type="button" class="on" data-period="month">Monthly</button>
+      <button type="button" data-period="year">Annual &middot; 2 months free</button>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">Pilot</div>
+        <div class="price">$0 <small>forever</small></div>
+        <div class="billed">No credit card needed</div>
+        <ul>
+          <li>Up to 50 active parts</li>
+          <li>Kanban cards, labels and scanning</li>
+          <li>Warehouse layout</li>
+          <li>Purchasing, purchase orders and receiving</li>
+          <li>Spend and reorder-frequency reports</li>
+          <li>Unlimited users</li>
+        </ul>
+        <a class="btn ghost" href="https://app.two-bin.com/signup">Start free</a>
+      </div>
+      <div class="plan featured">
+        <div class="name">Stock</div>
+        <div class="price" data-month="$179" data-year="$149">$179 <small>/ month</small></div>
+        <div class="billed" data-month="Billed monthly" data-year="$1,790 billed once a year">Billed monthly</div>
+        <ul>
+          <li>Up to 1,000 active parts</li>
+          <li>Everything in Pilot</li>
+          <li>Room for every supply in a growing shop</li>
+          <li>Unlimited users</li>
+        </ul>
+        <a class="btn" href="https://app.two-bin.com/signup">Start free, upgrade anytime</a>
+      </div>
+      <div class="plan">
+        <div class="name">Shop</div>
+        <div class="price" data-month="$359" data-year="$299">$359 <small>/ month</small></div>
+        <div class="billed" data-month="Billed monthly" data-year="$3,590 billed once a year">Billed monthly</div>
+        <ul>
+          <li>Up to 5,000 active parts</li>
+          <li>Everything in Stock</li>
+          <li>Made Parts: routing, work orders, stations and due dates</li>
+          <li>Unlimited users</li>
+        </ul>
+        <a class="btn ghost" href="https://app.two-bin.com/signup">Start free, upgrade anytime</a>
+      </div>
+    </div>
+    <p class="fineprint">Plans renew automatically until cancelled. Cancel anytime from Settings &rarr; Billing; you keep access until the end of the period you paid for. See <a href="/refunds">Refunds &amp; Cancellation</a>. Need more than 5,000 parts? <a href="mailto:support@two-bin.com">Talk to us</a>.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Stop running out. Start building the system.</h2>
+    <p class="lead" style="margin:0 auto 24px">Set it up in an afternoon. It's the first thing you let go of &mdash; and it's free to start.</p>
+    <p><a class="btn" href="https://app.two-bin.com/signup">Start free</a></p>
+    <p style="margin-top:36px">Questions? We're a small team and we answer every email.</p>
+    <p class="email"><a href="mailto:support@two-bin.com">support@two-bin.com</a></p>
+    <p class="fineprint">TwoBin is made by Proper Lean LLC dba Twobin, Texas, USA.</p>
+  </div>
+</section>
+</main>
+<script>
+document.querySelectorAll('.toggle button').forEach(b => b.addEventListener('click', () => {
+  const p = b.dataset.period
+  document.querySelectorAll('.toggle button').forEach(x => x.classList.toggle('on', x === b))
+  document.querySelectorAll('.plan .price[data-month]').forEach(el => { el.firstChild.nodeValue = el.dataset[p] + ' ' })
+  document.querySelectorAll('.plan .billed[data-month]').forEach(el => { el.textContent = el.dataset[p] })
+}))
+</script>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <img src="/assets/twobin-logo-light.png" alt="TwoBin">
+      <div>The system that keeps your shop stocked.</div>
+      <p class="small">&copy; 2026 Proper Lean LLC dba Twobin. Questions: <a href="mailto:support@two-bin.com">support@two-bin.com</a>.<br>
+      As an Amazon Associate, TwoBin earns from qualifying purchases made through buy links in the parts catalog.</p>
+    </div>
+    <div class="links">
+      <a href="/#pricing">Pricing</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/refunds">Refunds &amp; Cancellation</a>
+      <a href="mailto:support@two-bin.com">Contact</a>
+      <a href="https://app.two-bin.com/login">Sign in</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
